@@ -1,0 +1,48 @@
+.row {
+    text-align: left;
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+}
+
+.row > div {
+    padding: 5px 10px;
+}
+
+[class^="col-"] {
+    font-size: 1rem;
+    text-align: center;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    min-height: 1px;
+    height: 100%;
+}
+
+@import 'mixins';
+@import 'colors';
+$total-cols: 12;
+$cols: (
+    12: $w-100-color,
+    9: $w-75-color,
+    6: $w-50-color,
+    3: $w-25-color,
+);
+
+@function calculate-width($cols) {
+    @return $cols / $total-cols * 100%;
+}
+
+@media screen and (min-width: 900px){
+    @include cols-base-format("");
+}
+
+
+@media screen and (max-width: 900px){
+    @include cols-base-format("m-");
+}
+
+@media screen and (max-width: 600px){
+    @include cols-base-format("s-");
+}
