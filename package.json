@@ -5,13 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "styles": "sass sass:styles --no-source-map",
-    "styles:watch": "sass sass:styles --no-source-map --watch"
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "start": "npm run build && http-server ./dist",
+    "build": "gulp"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "sass": "^1.32.5"
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "http-server": "^0.12.3",
+    "sass": "^1.32.6",
+    "typescript": "^4.1.3"
   }
 }
