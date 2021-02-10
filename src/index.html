@@ -24,6 +24,7 @@
         </div>
     </div>
     <div id="news-container">
+        {{#each rows}}
         <div class="row">
             {{#each news}}
             <div class="col-3 col-m-6 col-s-12">
@@ -36,6 +37,7 @@
             </div>
             {{/each}}
         </div>
+        {{/each}}
     </div>
     <script src="/assets/scripts/main.js"></script>
 </body>
