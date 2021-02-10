@@ -1,5 +1,7 @@
 declare let Handlebars: any;
 
+let searchBar = (<HTMLInputElement>document.getElementById('search-bar'))
+
 let url = 'http://newsapi.org/v2/everything?' +
     'q=Microsoft&' +
     'sortBy=popularity&' +
@@ -34,4 +36,13 @@ fetchNews().then(fetched_news => {
 });
 
 
+function search(){
+    console.log(`Searching... ${searchBar.value}`);
+}
 
+searchBar.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      search();
+    }
+  });
