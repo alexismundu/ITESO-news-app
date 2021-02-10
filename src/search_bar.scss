@@ -1,0 +1,40 @@
+@import 'colors';
+$accent-color: #00b4cc; 
+
+.search {
+    width: 100%;
+    display: flex;
+}
+
+.search-bar {
+    width: 100%;
+    border: 3px solid $accent-color;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: $description-color;
+}
+
+.search-bar:focus {
+    color: $title-color;
+}
+
+.search-btn {
+    width: 40px;
+    height: 36px;
+    border: 1px solid $accent-color;
+    background: $accent-color;
+    text-align: center;
+    color: $light-color;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.wrap {
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 80%;
+}

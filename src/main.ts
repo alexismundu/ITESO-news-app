@@ -1,6 +1,6 @@
 declare let Handlebars: any;
 
-let searchBar = (<HTMLInputElement>document.getElementById('search-bar'))
+let searchBar = (<HTMLInputElement>document.getElementsByClassName('search-bar')[0])
 
 let url = 'http://newsapi.org/v2/everything?' +
     'q=Microsoft&' +
