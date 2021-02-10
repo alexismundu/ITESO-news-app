@@ -2,7 +2,7 @@
     @each $size, $color in $cols {
         .col-#{$w}#{$size} {
             width: calculate-width($size);
-            background-color: $color;
+            // background-color: $color;
         }
     }
 }
