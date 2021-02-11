@@ -11,45 +11,58 @@ let url = 'http://newsapi.org/v2/everything?' +
     'sortBy=popularity&' +
     `apiKey=${apiKey}`;
 
-let req = new Request(url);
 
 const templateSource = document.getElementById('news-container').innerHTML;
 const template = Handlebars.compile(templateSource);
 
-async function fetchNews() {
-    let response = await fetch(req);
-    let news = response.json();
-    return news;
+function refreshNews(){
+    fetchNews()
+    .then(fetched_news => {
+        displayNews(fetched_news);
+    })
+    .catch(err => console.log(err));
 }
 
-function displayNews() {
-    fetchNews().then(fetched_news => {
-        console.log(fetched_news['articles'].length)
-        let raw_news = fetched_news['articles'].length <= 20 ? fetched_news['articles']: fetched_news['articles'].slice(0, 20);
+function fetchNews() {
+    return fetch(url)
+        .then(response => response.json())
+        .catch(err => console.log(err));
+}
 
-        let news = raw_news.map(e => {
-            return {
-                urlToImage: e['urlToImage'],
-                title: e['title'],
-                description: e['description'],
-                url: e['url'],
+function displayNews(fetched_news: Promise<any>) {
+    
+    let rows = formatFetchedNewsIntoRows(fetched_news);
+
+    document.getElementById('news-container').innerHTML = template({
+        rows: rows
+    });
+}
+
+function formatFetchedNewsIntoRows(fetched_news){
+    let raw_news = fetched_news['articles'].length <= 20 ? fetched_news['articles'] : fetched_news['articles'].slice(0, 20);
+
+    let news = mapNewsData(raw_news);
+
+    let rows = [];
+
+    for (let i = 0, j = news.length; i < j; i += NEWS_PER_ROW) {
+        rows.push(
+            {
+                news: news.slice(i, i + NEWS_PER_ROW)
             }
-        });
+        );
+    }
+    return rows
+}
 
-        let rows = [];
-
-        for (let i = 0, j = news.length; i < j; i += NEWS_PER_ROW) {
-            rows.push(
-                {
-                    news: news.slice(i, i + NEWS_PER_ROW)
-                }
-            );
+function mapNewsData(raw_news) {
+    return raw_news.map(e => {
+        return {
+            urlToImage: e['urlToImage'],
+            title: e['title'],
+            description: e['description'],
+            url: e['url'],
         }
-
-        console.log(news);
-        document.getElementById('news-container').innerHTML = template({
-            rows: rows
-        });
     });
 }
 
@@ -59,9 +72,8 @@ function search() {
         + '&sortBy=popularity'
         + `&apiKey=${apiKey}`;
     console.log(`Searching... ${searchBar.value}`);
-    req = new Request(url);
 
-    displayNews();
+    refreshNews();
 
 }
 
@@ -72,4 +84,4 @@ searchBar.addEventListener("keyup", function (event) {
     }
 });
 
-displayNews();
+refreshNews();
