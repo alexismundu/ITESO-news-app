@@ -29,7 +29,7 @@ function fetchNews() {
         .catch(err => console.log(err));
 }
 
-function displayNews(fetched_news: Promise<any>) {
+function displayNews(fetched_news) {
     
     let rows = formatFetchedNewsIntoRows(fetched_news);
 
