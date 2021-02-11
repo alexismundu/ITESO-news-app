@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "start": "gulp"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-webserver": "^0.9.1",
     "http-server": "^0.12.3",
+    "jasmine": "^3.6.4",
     "sass": "^1.32.6",
     "typescript": "^4.1.3"
   }
