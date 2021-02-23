@@ -1,0 +1,45 @@
+.row {
+  width: 100%;
+  display: inline-block; }
+
+.row > div {
+  padding: 5px 10px; }
+
+[class^="col-"] {
+  text-align: center;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  min-height: 1px;
+  height: 100%; }
+
+@media screen and (min-width: 900px) {
+  .col-12 {
+    width: 100%; }
+  .col-9 {
+    width: 75%; }
+  .col-6 {
+    width: 50%; }
+  .col-3 {
+    width: 25%; } }
+
+@media screen and (max-width: 900px) {
+  .col-m-12 {
+    width: 100%; }
+  .col-m-9 {
+    width: 75%; }
+  .col-m-6 {
+    width: 50%; }
+  .col-m-3 {
+    width: 25%; } }
+
+@media screen and (max-width: 600px) {
+  .col-s-12 {
+    width: 100%; }
+  .col-s-9 {
+    width: 75%; }
+  .col-s-6 {
+    width: 50%; }
+  .col-s-3 {
+    width: 25%; } }

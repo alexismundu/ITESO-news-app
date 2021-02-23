@@ -5,19 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine",
-    "start": "gulp"
+    "startfront": "gulp",
+    "startback": "nodemon ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^4.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-webserver": "^0.9.1",
-    "http-server": "^0.12.3",
     "jasmine": "^3.6.4",
+    "nodemon": "^2.0.7",
     "sass": "^1.32.6",
     "typescript": "^4.1.3"
   }

@@ -3,22 +3,22 @@ let sass = require('gulp-sass');
 let typescript = require('gulp-typescript');
 let webserver = require('gulp-webserver');
 
-const BUILD_PATH = 'dist';
+const BUILD_PATH = 'public';
 
-gulp.task('html', function () {
-    return gulp.src('src/index.html')
-    .pipe(gulp.dest(BUILD_PATH));
-});
+// gulp.task('html', function () {
+//     return gulp.src('views/index.html')
+//     .pipe(gulp.dest(BUILD_PATH));
+// });
 
-gulp.task('watch:html', gulp.series('html', function(done) {
-    gulp.watch('src/**/*.html', gulp.series('html'));
-    done();
-}));
+// gulp.task('watch:html', gulp.series('html', function(done) {
+//     gulp.watch('src/**/*.html', gulp.series('html'));
+//     done();
+// }));
 
 gulp.task('styles', function () {
     return gulp.src('src/**/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest(BUILD_PATH + '/assets/styles'));
+    .pipe(gulp.dest(BUILD_PATH));
 });
 
 gulp.task('watch:styles', gulp.series('styles', function(done) {
@@ -42,9 +42,11 @@ gulp.task('serve', function() {
     return gulp.src(BUILD_PATH).pipe(
         webserver({
             open:true,
-            livereload: true
+            livereload: true,
+            port: 3000
         })
     );
 })
 
-gulp.task('default', gulp.parallel(['watch:styles',  'watch:html', 'watch:scripts', 'serve']));
+// gulp.task('default', gulp.parallel(['watch:styles',  'watch:html', 'watch:scripts', 'serve']));
+gulp.task('default', gulp.parallel(['watch:styles', 'watch:scripts', 'serve']));
