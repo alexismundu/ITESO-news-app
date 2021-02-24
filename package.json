@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine",
-    "startfront": "gulp",
-    "startback": "nodemon ."
+    "frontend": "gulp",
+    "backend": "nodemon ."
   },
   "keywords": [],
   "author": "",

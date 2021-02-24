@@ -12,7 +12,6 @@ function refreshNews() {
 }
 function fetchNews() {
     var url = searchBar.value.length ? endpoint + "/" + searchBar.value : defaultUrl;
-    console.log("fetching news...", url);
     return fetch(url)
         .then(function (response) {
         if (response.status === 200) {
