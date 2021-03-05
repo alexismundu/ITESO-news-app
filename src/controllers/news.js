@@ -1,6 +1,12 @@
 const fetch = require("node-fetch");
+const { APIKEY } = require("../../constants");
 
-module.exports = function (res, url) {
+module.exports = function (res, subject) {
+  let url =
+    "http://newsapi.org/v2/everything?" +
+    `q=${subject}&` +
+    "sortBy=popularity&" +
+    `apiKey=${APIKEY}`;
   fetch(url)
     .then((fetchedNews) => {
       if (fetchedNews.status == 200) {

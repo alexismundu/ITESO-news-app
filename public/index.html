@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-12 col-m-12 col-s-12">
+            <div class="wrap">
+                <div class="search">
+                   <input type="text" class="search-bar" placeholder="Buscar noticias">
+                   <button type="submit" class="search-btn" onclick="search()">
+                     <i class="fa fa-search"></i>
+                  </button>
+                </div>
+             </div>
+        </div>
+    </div>
+    <div id="news-container">
+        {{#each rows}}
+        <div class="row">
+            {{#each news}}
+            <div class="col-3 col-m-6 col-s-12">
+                <div class="news-item">
+                    <img src="{{urlToImage}}" />
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                    <a class='news-item-btn'' href="{{url}}" target="_blank">Ver más</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
+    <script src="/assets/scripts/main.js"></script>
+</body>
+
+</html>
