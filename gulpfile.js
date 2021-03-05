@@ -2,6 +2,8 @@ let gulp = require('gulp');
 let sass = require('gulp-sass');
 let typescript = require('gulp-typescript');
 let webserver = require('gulp-webserver');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const BUILD_PATH = 'public';
 
@@ -43,7 +45,7 @@ gulp.task('serve', function() {
         webserver({
             open:true,
             livereload: true,
-            port: 3000
+            port: process.env.PORT || 3000
         })
     );
 })
