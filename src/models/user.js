@@ -4,7 +4,6 @@ class User extends Database{
     constructor() {
         super();
         this.useCollection('users');
-        console.log('User model...');
     }
 }
 
