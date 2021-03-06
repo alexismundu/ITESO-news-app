@@ -27,9 +27,20 @@ class Database {
         this.collectionName = collectionName;
     }
 
+    getCollection(){
+        return db.collection(this.collectionName);
+    }
+
     find(filters, cb) {
-        const collection = db.collection(this.collectionName);
-        return collection.find(filters).toArray(cb);
+        return this.getCollection().find(filters).toArray(cb);
+    }
+
+    findOne(filters, cb) {
+        return this.getCollection().findOne(filters, cb);
+    }
+
+    insertOne(obj, cb) {
+        return this.getCollection().insertOne(obj, cb);
     }
 }
 
