@@ -7,15 +7,15 @@ dotenv.config();
 
 const BUILD_PATH = 'public';
 
-// gulp.task('html', function () {
-//     return gulp.src('views/index.html')
-//     .pipe(gulp.dest(BUILD_PATH));
-// });
+gulp.task('html', function () {
+    return gulp.src('views/**/*.html')
+    .pipe(gulp.dest(BUILD_PATH));
+});
 
-// gulp.task('watch:html', gulp.series('html', function(done) {
-//     gulp.watch('src/**/*.html', gulp.series('html'));
-//     done();
-// }));
+gulp.task('watch:html', gulp.series('html', function(done) {
+    gulp.watch('src/**/*.html', gulp.series('html'));
+    done();
+}));
 
 gulp.task('styles', function () {
     return gulp.src('src/**/*.scss')
@@ -51,4 +51,4 @@ gulp.task('serve', function() {
 })
 
 // gulp.task('default', gulp.parallel(['watch:styles',  'watch:html', 'watch:scripts', 'serve']));
-gulp.task('default', gulp.parallel(['watch:styles', 'watch:scripts', 'serve']));
+gulp.task('default', gulp.parallel(['watch:styles', 'watch:scripts', 'watch:html', 'serve']));
